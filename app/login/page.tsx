@@ -1,17 +1,12 @@
 import { signInWithGithub, signOut } from "@/actions/auth";
 import { currentUser } from "@/data/auth";
-import { redirect } from "next/navigation";
 
-export default async function Home() {
+export default async function Page() {
   const user = await currentUser();
-
-  if (!user) {
-    redirect("/login");
-  }
-
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <p>Hello, Aimani</p>
+    <div>
+      <p>ログイン画面です。ログインしてください。</p>
+
       <div>
         {user ? (
           <form action={signOut}>
@@ -23,6 +18,6 @@ export default async function Home() {
           </form>
         )}
       </div>
-    </main>
+    </div>
   );
 }
